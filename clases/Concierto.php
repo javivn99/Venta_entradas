@@ -54,7 +54,7 @@ class Concierto
     $filas_afectadas= $modificacion->rowCount();
    if( $filas_afectadas > 0 )
       //echo "<script> alert('Se han modificado las plazas libres correctamente')</script>";
-      header('Location: ../index.php');
+      header('Location: index.php');
 }
 
   

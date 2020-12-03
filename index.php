@@ -75,7 +75,7 @@
                 <div class="row "></div> <!-- linea en blanco -->
                 <div class="col s4">
 
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Calcular
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Reservar
 
                     </button>
 
