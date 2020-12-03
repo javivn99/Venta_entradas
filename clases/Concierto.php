@@ -6,7 +6,7 @@ class Concierto
       //echo 'He creado un objeto de tipo concierto';
                    
     } 
-  public function entradas_libres($con,$grada,$pista_golden,$pista)
+    public function listar_entradas_libres($con)
   {
     //echo 'voy a mirar si hay entradas libres';
     $sql = "select * from plazas";
@@ -15,8 +15,20 @@ class Concierto
     //$filas es un array asociativo con los registros de la consulta
     $filas = $listado->fetchAll();
     echo '<pre>';
-   var_dump($filas);
+       var_dump($filas);
     echo '</pre>';
+  }   
+  public function entradas_libres($con,$grada,$pista_golden,$pista)
+  {
+    //echo 'voy a mirar si hay entradas libres';
+    $sql = "select * from plazas";
+    $listado = $con->prepare($sql);
+    $listado->execute();
+    //$filas es un array asociativo con los registros de la consulta
+    $filas = $listado->fetchAll();
+    //echo '<pre>';
+   //var_dump($filas);
+    //echo '</pre>';
 
    if (($filas[0][0]>=$grada) and ($filas[0][1]>=$pista_golden) and ($filas[0][2]>=$pista))
    {
@@ -41,7 +53,8 @@ class Concierto
     $modificacion->execute(array($grada,$pista_golden,$pista));
     $filas_afectadas= $modificacion->rowCount();
    if( $filas_afectadas > 0 )
-      echo "<script> alert('Se han modificado las plazas libres correctamente')</script>";
+      //echo "<script> alert('Se han modificado las plazas libres correctamente')</script>";
+      header('Location: ../index.php');
 }
 
   

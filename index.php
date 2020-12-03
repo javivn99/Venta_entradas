@@ -89,3 +89,15 @@
 </body>
 
 </html>
+<?php
+require_once 'clases/Conexion.php';
+require_once 'clases/Concierto.php';
+try{
+    $obj_conexion=new Conexion();
+    $con=$obj_conexion->conectar();//ya tengo en esa variable la conexion
+    $obj_concierto=new Concierto();
+    $entradas=$obj_concierto->listar_entradas_libres($con);
+}catch (PDOException $e) {
+    echo "Fallo en el acceso a la BD" . $e->getMessage();
+    
+}  
